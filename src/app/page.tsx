@@ -1,7 +1,7 @@
-import All from "./components/all";
+import Layout from "./components/Layout";
 
 export default function Home() {
   return (
-    <All />
+    <Layout />
   );
 }
