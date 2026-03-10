@@ -7,17 +7,6 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Estado para controlar as seções dropdown
-  const [openSections, setOpenSections] = useState({
-    projects: true,
-    certificates: true,
-    books: true,
-  });
-
-  // Função para alternar o estado aberto/fechado
-  const toggleSection = (section: any) => {
-    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
-  };
   // Efeito para mudar o estilo do header ao rolar a página
   useEffect(() => {
     const handleScroll = () => {
@@ -66,6 +55,7 @@ export default function Header() {
 
         {/* Mobile Menu Toggle */}
         <button
+          type="button"
           className="md:hidden text-neutral-400 hover:text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >

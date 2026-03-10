@@ -9,7 +9,7 @@ export default function Footer() {
             joaoflavio<span className="text-sky-500">.cloud</span>
           </h2>
           <p className="text-sm text-neutral-500">
-            Software Engineer & Cloud Developer
+            Engenheiro de Computação & Desenvolvedor Full-stack.
           </p>
         </div>
 

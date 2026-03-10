@@ -1,19 +1,31 @@
+/** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
 'use client'
 
 import { Award, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
+// Tipamos as seções válidas para o TypeScript
+type SectionKey = "projects" | "certificates" | "books";
+
 export default function CertificatesSection() {
   // Estado para controlar as seções dropdown
-  const [openSections, setOpenSections] = useState({
+  const [openSections, setOpenSections] = useState<Record<SectionKey, boolean>>({
     projects: true,
     certificates: true,
     books: true,
   });
 
-  // Função para alternar o estado aberto/fechado
-  const toggleSection = (section: any) => {
+  // Função para alternar o estado aberto/fechado com tipagem correta
+  const toggleSection = (section: SectionKey) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
+  };
+
+  // Lidar com eventos de teclado (Enter ou Espaço) para acessibilidade
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault(); // Evita que o espaço role a página para baixo
+      toggleSection("certificates");
+    }
   };
 
   return (
@@ -23,8 +35,12 @@ export default function CertificatesSection() {
     >
       <div className="max-w-6xl mx-auto">
         <div
-          className="flex flex-col items-center mb-16 text-center cursor-pointer group"
+          className="flex flex-col items-center mb-16 text-center cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg"
           onClick={() => toggleSection("certificates")}
+          onKeyDown={handleKeyDown}
+          role="button"
+          tabIndex={0}
+          aria-expanded={openSections.certificates}
         >
           <Award
             className="text-neutral-500 mb-4 group-hover:text-sky-500 transition-colors"
@@ -57,7 +73,7 @@ export default function CertificatesSection() {
               <div className="bg-[#111] p-3 rounded shadow-2xl">
                 <div className="border border-neutral-700 p-1 h-full">
                   <div className="border border-neutral-700 border-dashed h-full p-8 flex flex-col items-center text-center justify-center relative bg-[#0a0a0a]">
-                    <div className="absolute top-4 w-12 h-[1px] bg-neutral-600"></div>
+                    <div className="absolute top-4 w-12 h-px bg-neutral-600"></div>
                     <h4 className="text-xs text-neutral-500 tracking-widest uppercase mb-4">
                       Rocketseat
                     </h4>
@@ -75,7 +91,7 @@ export default function CertificatesSection() {
               <div className="bg-[#111] p-3 rounded shadow-2xl">
                 <div className="border border-neutral-700 p-1 h-full">
                   <div className="border border-neutral-700 border-dashed h-full p-8 flex flex-col items-center text-center justify-center relative bg-[#0a0a0a]">
-                    <div className="absolute top-4 w-12 h-[1px] bg-neutral-600"></div>
+                    <div className="absolute top-4 w-12 h-px bg-neutral-600"></div>
                     <h4 className="text-xs text-neutral-500 tracking-widest uppercase mb-4">
                       Rocketseat
                     </h4>
@@ -93,7 +109,7 @@ export default function CertificatesSection() {
               <div className="bg-[#111] p-3 rounded shadow-2xl">
                 <div className="border border-neutral-700 p-1 h-full">
                   <div className="border border-neutral-700 border-dashed h-full p-8 flex flex-col items-center text-center justify-center relative bg-[#0a0a0a]">
-                    <div className="absolute top-4 w-12 h-[1px] bg-neutral-600"></div>
+                    <div className="absolute top-4 w-12 h-px bg-neutral-600"></div>
                     <h4 className="text-xs text-neutral-500 tracking-widest uppercase mb-4">
                       Cloud & DevOps
                     </h4>

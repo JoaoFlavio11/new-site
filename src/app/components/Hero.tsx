@@ -13,7 +13,7 @@ export default function HeroSection() {
 
       <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight">
         Engenheiro de Computação <br className="hidden md:block" />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-indigo-500">
           & Desenvolvedor Full-stack.
         </span>
       </h1>
