@@ -1,71 +1,23 @@
-/** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
-'use client'
-
 import { Award, ChevronDown } from "lucide-react";
-import { useState } from "react";
-
-// Tipamos as seções válidas para o TypeScript
-type SectionKey = "projects" | "certificates" | "books";
+import DropdownSection from "./DropdownSection";
 
 export default function CertificatesSection() {
-  // Estado para controlar as seções dropdown
-  const [openSections, setOpenSections] = useState<Record<SectionKey, boolean>>({
-    projects: true,
-    certificates: true,
-    books: true,
-  });
 
-  // Função para alternar o estado aberto/fechado com tipagem correta
-  const toggleSection = (section: SectionKey) => {
-    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
-  };
-
-  // Lidar com eventos de teclado (Enter ou Espaço) para acessibilidade
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault(); // Evita que o espaço role a página para baixo
-      toggleSection("certificates");
-    }
-  };
 
   return (
-    <section
-      id="certificates"
-      className="py-24 px-6 border-y border-neutral-800 bg-[#0a0a0a]"
-    >
-      <div className="max-w-6xl mx-auto">
-        <div
-          className="flex flex-col items-center mb-16 text-center cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg"
-          onClick={() => toggleSection("certificates")}
-          onKeyDown={handleKeyDown}
-          role="button"
-          tabIndex={0}
-          aria-expanded={openSections.certificates}
+        <DropdownSection
+          id="certificates"
+          title="Certificações e Formações"
+          icon={<Award size={32}/>}
+          className=""
         >
-          <Award
-            className="text-neutral-500 mb-4 group-hover:text-sky-500 transition-colors"
-            size={32}
-          />
-          <div className="flex items-center gap-4 justify-end mb-4">
-            <h2 className="text-3xl font-bold text-white">
-              Certificações e Formações
-            </h2>
-            <div className="p-2 rounded-full bg-[#111] group-hover:bg-[#1a1a1a] transition-colors border border-neutral-800">
-              <ChevronDown
-                className={`text-neutral-400 transition-transform duration-500 ${openSections.certificates ? "rotate-180" : ""}`}
-                size={20}
-              />
-            </div>
-          </div>
+          <div className="flex flex-col items-center mb-16 text-center cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-lg">
           <p className="text-neutral-400 max-w-xl group-hover:text-neutral-300 transition-colors">
             Um registro formal do meu aprendizado contínuo e especializações
             técnicas.
           </p>
-        </div>
-
-        <div
-          className={`grid transition-all duration-500 ease-in-out ${openSections.certificates ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-        >
+          </div>
+        
           <div className="overflow-hidden">
             {/* Estilo Quadro de Diplomas */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -124,8 +76,6 @@ export default function CertificatesSection() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </DropdownSection>
   );
 }
