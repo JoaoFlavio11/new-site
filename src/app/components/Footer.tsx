@@ -1,6 +1,8 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Gitlab, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
+
   return (
     <footer className="border-t border-neutral-800 bg-[#050505] py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
@@ -12,29 +14,42 @@ export default function Footer() {
             Engenheiro de Computação & Desenvolvedor Full-stack.
           </p>
         </div>
-
+        
         <div className="flex items-center gap-6">
-          <a
+          <Link
             href="https://github.com/JoaoFlavio11"
             className="text-neutral-500 hover:text-white transition-colors"
+            target="_blank"
           >
             <span className="sr-only">GitHub</span>
             <Github size={20} />
-          </a>
-          <a
+          </Link>
+
+          <Link
+            href="https://gitlab.com/joaoflaviocl"
+            className="text-neutral-500 hover:text-white transition-colors"
+            target="_blank"
+          >
+            <span className="sr-only">GitLab</span>
+            <Gitlab />
+          </Link>
+          
+          <Link
             href="https://www.linkedin.com/in/joaoflaviocl/"
             className="text-neutral-500 hover:text-white transition-colors"
+            target="_blank"
           >
             <span className="sr-only">LinkedIn</span>
             <Linkedin size={20} />
-          </a>
-          <a
+          </Link>
+          <Link
             href="mailto:contato@joaoflavio.cloud"
             className="text-neutral-500 hover:text-white transition-colors"
+            target="_blank"
           >
             <span className="sr-only">Email</span>
             <Mail size={20} />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-neutral-900 text-center text-xs text-neutral-600">

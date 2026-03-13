@@ -24,9 +24,9 @@ export default function ProjectsSection() {
     >
       <div className="relative z-10 mt-4">
         {/* Efeito de sombra sutil atrás do grid de projetos */}
-        <div className="absolute inset-0  -z-10 rounded-[3rem]" />
+        <div className="absolute inset-0 -z-10 rounded-[3rem]" />
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           {/* Mapeando a array de projetos */}
           {projetos.map((projeto) => (
@@ -69,19 +69,6 @@ export default function ProjectsSection() {
               </div>
             </a>
           ))}
-
-          {/* Botão de Ver Todos */}
-          <div className="md:col-span-2 flex justify-center mt-8">
-            <a 
-              href="https://github.com/JoaoFlavio11" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-sky-500/10 hover:border-sky-500/30 hover:text-sky-400 transition-all duration-300 hover:scale-105 active:scale-95 backdrop-blur-md font-medium shadow-[0_0_30px_-10px_rgba(14,165,233,0.15)]"
-            >
-              Ver todos os repositórios 
-              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-          </div>
 
         </div>
       </div>
