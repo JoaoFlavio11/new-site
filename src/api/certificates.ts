@@ -1,9 +1,4 @@
-export interface Certificado {
-  id: number;
-  titulo: string;
-  ensino: string;
-  link: string;
-}
+import type { Certificado } from "@/types/types";
 
 export const certificados: Certificado[] = [
   {

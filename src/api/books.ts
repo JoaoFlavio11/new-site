@@ -1,10 +1,4 @@
-export interface Livro {
-  id: number;
-  titulo: string;
-  autor: string;
-  link: string;
-  capa: string;
-}
+import type { Livro } from "@/types/types";
 
 export const livros: Livro[] = [
   {

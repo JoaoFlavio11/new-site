@@ -4,7 +4,7 @@ import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 import { livros } from "../../api/books";
-import DropdownSection from "./DropdownSection";
+import DropdownSection from "@/components/layout/DropdownSection";
 
 export default function BooksSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -27,7 +27,6 @@ export default function BooksSection() {
       description="Alguns dos livros que moldaram minha forma de pensar sobre engenharia de software, código limpo e arquitetura de sistemas."
     >
       <div className="relative group mt-8">
-        
         {/* Botão de Rolar para a Esquerda (Fica invisível até passar o mouse) */}
         <button
           type="button"

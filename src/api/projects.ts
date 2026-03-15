@@ -1,11 +1,4 @@
-export interface Projeto {
-  id: number;
-  titulo: string;
-  descricao: string;
-  link: string;
-  tags: string[];
-  icone: "terminal" | "cloud" | "code" | "warehouse";
-}
+import type { Projeto } from "@/types/types";
 
 export const projetos: Projeto[] = [
   {

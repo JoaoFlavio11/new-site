@@ -3,8 +3,8 @@
 import { Briefcase, Calendar, ChevronDown, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { experiencias } from "../../api/jobs";
-import DropdownSection from "./DropdownSection";
+import { experiencias } from "../../../api/jobs";
+import DropdownSection from "@/components/layout/DropdownSection";
 
 export default function JobsSection() {
   const [expandedId, setExpandedId] = useState<number | null>(1);
@@ -82,9 +82,13 @@ export default function JobsSection() {
 
                       {/* Período visível no desktop à direita */}
                       <div className="hidden md:flex flex-col items-end text-right">
-                        <p className="text-sm font-mono text-neutral-500">{exp.periodo}</p>
+                        <p className="text-sm font-mono text-neutral-500">
+                          {exp.periodo}
+                        </p>
                         {exp.duracao && (
-                          <p className="text-xs text-neutral-600 mt-1">{exp.duracao}</p>
+                          <p className="text-xs text-neutral-600 mt-1">
+                            {exp.duracao}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -92,7 +96,9 @@ export default function JobsSection() {
 
                   {/* Ícone de Expansão */}
                   <div className="shrink-0 ml-4 mt-2 sm:mt-0 opacity-50 group-hover:opacity-100 transition-opacity">
-                    <div className={`p-2 rounded-full transition-transform duration-500 ease-out bg-white/3 ${isExpanded ? "rotate-180" : ""}`}>
+                    <div
+                      className={`p-2 rounded-full transition-transform duration-500 ease-out bg-white/3 ${isExpanded ? "rotate-180" : ""}`}
+                    >
                       <ChevronDown size={18} className="text-neutral-400" />
                     </div>
                   </div>
@@ -101,23 +107,21 @@ export default function JobsSection() {
                 {/* Área Expansível Clean & Editorial */}
                 <div
                   className={`grid transition-all duration-500 ease-in-out ${
-                    isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    isExpanded
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
                   <div className="overflow-hidden">
                     {/* Alinhamento do conteúdo com o texto (não com a logo) usando padding-left calculado */}
                     <div className="pb-8 px-5 md:px-8 pt-2 md:pl-26">
-                      
                       {/* Linha vertical que âncora o conteúdo */}
                       <div className="border-l border-neutral-800/60 pl-5 md:pl-8">
-                        
                         {/* Meta Infos Mobile (Data e Local) */}
                         <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-xs uppercase tracking-widest text-neutral-500 font-mono mb-8 md:hidden">
                           <div className="flex items-center gap-2">
                             <Calendar size={14} className="opacity-70" />
-                            <span>
-                              {exp.periodo}
-                            </span>
+                            <span>{exp.periodo}</span>
                           </div>
                         </div>
 
@@ -125,7 +129,9 @@ export default function JobsSection() {
                         <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-500 font-mono mb-8">
                           <MapPin size={14} className="opacity-70" />
                           <span>
-                            {exp.local} <span className="mx-2 opacity-30">|</span> {exp.modalidade}
+                            {exp.local}{" "}
+                            <span className="mx-2 opacity-30">|</span>{" "}
+                            {exp.modalidade}
                           </span>
                         </div>
 
@@ -136,8 +142,12 @@ export default function JobsSection() {
                               key={index}
                               className="flex items-start gap-4 text-neutral-400 font-light leading-relaxed text-sm md:text-base"
                             >
-                              <span className="text-neutral-700 mt-2 text-[8px] shrink-0">■</span>
-                              <span className="group-hover:text-neutral-300 transition-colors duration-300">{projeto}</span>
+                              <span className="text-neutral-700 mt-2 text-[8px] shrink-0">
+                                ■
+                              </span>
+                              <span className="group-hover:text-neutral-300 transition-colors duration-300">
+                                {projeto}
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -153,7 +163,6 @@ export default function JobsSection() {
                             </span>
                           ))}
                         </div>
-
                       </div>
                     </div>
                   </div>

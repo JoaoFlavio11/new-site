@@ -56,7 +56,7 @@ export default function AboutMeSection() {
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              href="/api/cv_joao_flavio.pdf"
+              href="/docs/cv_joao_flavio.pdf"
               className="group inline-flex items-center gap-3 px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-neutral-200 transition-colors"
             >
               <FileText size={18} />

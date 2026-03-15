@@ -1,13 +1,4 @@
-export interface Tech {
-  name: string;
-  url: string;
-}
-
-export interface Skill {
-  name: string;
-  icon: "Terminal" | "Container" | "Code2" | "ExternalLink";
-  techs: Tech[]; // Corrigido de string{} para um array do tipo Tech
-}
+import type { Skill } from "@/types/types";
 
 export const skills: Skill[] = [
   {
