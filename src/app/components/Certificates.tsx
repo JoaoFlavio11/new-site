@@ -1,4 +1,4 @@
-import { Award } from "lucide-react";
+import { Award, BadgeCheck, ExternalLink } from "lucide-react";
 import DropdownSection from "./DropdownSection";
 import { certificados } from "@/api/certificates";
 import Link from "next/link";
@@ -10,11 +10,10 @@ export default function CertificatesSection() {
       title="Certificações e Formações"
       icon={<Award size={32} />}
       description="Um registro formal do meu aprendizado contínuo e especializações técnicas."
-      className="border-y border-neutral-800 bg-[#0a0a0a]"
     >
-      <div className="overflow-hidden mt-8">
-        {/* Estilo Quadro de Diplomas */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="mt-8">
+        {/* Grid fluida e responsiva em vez de caixas com tamanho fixo */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           
           {/* Mapeando a array de certificados */}
           {certificados.map((cert) => (
@@ -23,27 +22,38 @@ export default function CertificatesSection() {
               href={cert.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="block group"
+              className="group relative flex flex-col justify-between bg-neutral-900/40 backdrop-blur-xl border border-neutral-800/60 p-6 md:p-8 rounded-2xl hover:border-sky-500/30 hover:bg-neutral-800/80 transition-all duration-500 hover:-translate-y-1 overflow-hidden shadow-xl min-h-[240px]"
             >
-              <div className="bg-[#111] p-3 rounded shadow-2xl transition-transform duration-300 group-hover:-translate-y-2 h-53 w-90">
-                <div className="border border-neutral-700 p-1 h-full">
-                  <div className="border border-neutral-700 border-dashed h-full p-8 flex flex-col items-center text-center justify-center relative bg-[#0a0a0a] group-hover:border-sky-500/30 transition-colors">
-                    
-                    <div className="absolute top-4 w-12 h-px bg-neutral-600 group-hover:bg-sky-500/50 transition-colors"></div>
-                    
-                    <h4 className="text-xs text-neutral-500 tracking-widest uppercase mb-4">
-                      {cert.ensino}
-                    </h4>
-                    
-                    <h3 className="text-lg font-mono text-neutral-200 mb-6 leading-snug group-hover:text-sky-400 transition-colors">
-                      {cert.titulo}
-                    </h3>
-                    
-                    <p className="text-xs text-neutral-500 font-mono mt-auto">
-                      Autenticado
-                    </p>
+              {/* Linha gradiente superior animada no hover (Mantém o padrão visual dos Projetos) */}
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-sky-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="flex-1">
+                {/* Header do Card com Ícones */}
+                <div className="flex justify-between items-start mb-6">
+                  <div className="text-neutral-500 group-hover:text-sky-400 transition-colors duration-500">
+                    <Award size={28} strokeWidth={1.5} />
+                  </div>
+                  
+                  {/* Ícone de link externo que aparece no hover deslizando suavemente */}
+                  <div className="p-2 rounded-full bg-white/5 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0">
+                    <ExternalLink size={14} className="text-white" />
                   </div>
                 </div>
+                
+                {/* Conteúdo (Instituição e Título) */}
+                <h4 className="text-[11px] text-neutral-500 tracking-widest uppercase mb-3 font-mono">
+                  {cert.ensino}
+                </h4>
+                
+                <h3 className="text-xl font-bold text-white tracking-tight leading-snug group-hover:text-sky-400 transition-colors">
+                  {cert.titulo}
+                </h3>
+              </div>
+              
+              {/* Footer (Badge Autenticado) */}
+              <div className="mt-8 pt-4 border-t border-neutral-800/50 flex items-center gap-2 text-xs font-mono text-emerald-500/70 group-hover:text-emerald-400 transition-colors">
+                <BadgeCheck size={16} />
+                <span>Autenticado</span>
               </div>
             </Link>
           ))}

@@ -3,6 +3,7 @@ import AboutMeSection from './AboutMe';
 import BooksSection from './Books';
 import CertificatesSection from './Certificates';
 import HeroSection from './Hero';
+import JobsSection from './JobsSection';
 import ProjectsSection from './Projects';
 
 const Layout = () => {
@@ -17,15 +18,20 @@ const Layout = () => {
         {/* ABOUT SECTION */}
         <AboutMeSection />
 
-        {/* PROJECTS SECTION */}
-        <ProjectsSection />
+        <div className="mt-10">
+          {/* JOBS SECTION */}
+          <JobsSection />
+          
+          {/* CERTIFICATES SECTION (Quadro de Diplomas) */}
+          <CertificatesSection />
 
-        {/* CERTIFICATES SECTION (Quadro de Diplomas) */}
-        <CertificatesSection />
-
-        {/* BOOKS / LIBRARY SECTION */}
-        <BooksSection />
-
+          {/* PROJECTS SECTION */}
+          <ProjectsSection />
+          
+          {/* BOOKS / LIBRARY SECTION */}
+          <BooksSection />
+        </div>
+        
       </main>
 
     </div>
