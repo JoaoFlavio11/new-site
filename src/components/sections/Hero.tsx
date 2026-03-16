@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[95vh] w-full flex flex-col justify-center overflow-hidden bg-[#050505] pt-24 pb-12"
+      className="relative min-h-[95vh] w-full flex flex-col justify-center overflow-hidden  pt-24 pb-12"
     >
       {/* Background Pattern: Malha de arquitetura sutil com fade-out nas bordas */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none" />

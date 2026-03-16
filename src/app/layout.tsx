@@ -62,11 +62,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
-        {/* Background Pattern: Malha de arquitetura sutil com fade-out nas bordas */}
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_80%_60%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none" />
         {/* <Header /> */}
+
         {children}
         <Footer />
+        {/* Ruído de fundo (Grain texture) - dá uma cara de "papel" ou material físico */}
+        <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </body>
     </html>
   );
