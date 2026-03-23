@@ -1,5 +1,5 @@
 import { certificados } from "@/api/certificates";
-import { Award, BadgeCheck, ExternalLink } from "lucide-react";
+import { Award, BadgeCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import DropdownSection from "@/components/layout/DropdownSection";
 
@@ -8,55 +8,70 @@ export default function CertificatesSection() {
     <DropdownSection
       id="certificates"
       title="Certificações e Formações"
-      icon={<Award size={32} />}
-      description="Um registro formal do meu aprendizado contínuo e especializações técnicas."
+      icon={<Award size={24} className="opacity-50" />}
+      description="Registros técnicos e validações de competência em engenharia e software."
     >
-      <div className="mt-8">
-        {/* Grid fluida e responsiva em vez de caixas com tamanho fixo */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {/* Mapeando a array de certificados */}
-          {certificados.map((cert) => (
+      <div className="relative mt-10 group/slider">
+        {/* Slider Container: Scroll horizontal com snap para travar nos cards */}
+        <div className="flex overflow-x-auto gap-4 pb-12 no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing">
+          
+          {certificados.map((cert, index) => (
             <Link
               key={cert.id}
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex flex-col justify-between bg-neutral-900/40 backdrop-blur-xl border border-neutral-800/60 p-6 md:p-8 rounded-2xl hover:border-sky-500/30 hover:bg-neutral-800/80 transition-all duration-500 hover:-translate-y-1 overflow-hidden shadow-xl min-h-[240px]"
+              className="flex-none w-[280px] md:w-[380px] snap-start group relative"
             >
-              {/* Linha gradiente superior animada no hover (Mantém o padrão visual dos Projetos) */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-sky-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
 
-              <div className="flex-1">
-                {/* Header do Card com Ícones */}
-                <div className="flex justify-between items-start mb-6">
-                  <div className="text-neutral-500 group-hover:text-sky-400 transition-colors duration-500">
-                    <Award size={28} strokeWidth={1.5} />
+              {/* Card Style: Industrial & Minimal */}
+              <div className="relative bg-[#0c0c0c] border border-neutral-900 p-6 md:p-8 transition-all duration-500 group-hover:border-neutral-700">
+                
+                {/* Indicador de Hover: Apenas uma linha sutil */}
+                <div className="absolute top-0 left-0 w-0 h-[1px] bg-neutral-400 transition-all duration-700 group-hover:w-full" />
+
+                <div className="flex flex-col justify-between h-[160px]">
+                  <div>
+                    <h4 className="text-[10px] text-neutral-500 tracking-[0.2em] uppercase font-mono mb-2">
+                      {cert.ensino}
+                    </h4>
+                    <h3 className="text-xl font-semibold font-mono text-neutral-300 tracking-tight leading-snug group-hover:text-white transition-colors">
+                      {cert.titulo}
+                    </h3>
                   </div>
 
-                  {/* Ícone de link externo que aparece no hover deslizando suavemente */}
-                  <div className="p-2 rounded-full bg-white/5 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0">
-                    <ExternalLink size={14} className="text-white" />
+                  {/* Footer do Card */}
+                  <div className="flex justify-between items-end">
+                    <div className="flex items-center gap-2 text-[9px] font-mono uppercase tracking-tighter opacity-20 group-hover:opacity-100 transition-opacity text-emerald-500">
+                      <BadgeCheck size={12} />
+                      <span>Verified_Auth</span>
+                    </div>
+                    <ArrowRight size={16} className="text-neutral-700 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all" />
                   </div>
                 </div>
-
-                {/* Conteúdo (Instituição e Título) */}
-                <h4 className="text-[11px] text-neutral-500 tracking-widest uppercase mb-3 font-mono">
-                  {cert.ensino}
-                </h4>
-
-                <h3 className="text-xl font-bold text-white tracking-tight leading-snug group-hover:text-sky-400 transition-colors">
-                  {cert.titulo}
-                </h3>
-              </div>
-
-              {/* Footer (Badge Autenticado) */}
-              <div className="mt-8 pt-4 border-t border-neutral-800/50 flex items-center gap-2 text-xs font-mono text-emerald-500/70 group-hover:text-emerald-400 transition-colors">
-                <BadgeCheck size={16} />
-                <span>Autenticado</span>
               </div>
             </Link>
           ))}
+
+          {/* Spacer final para garantir que o último card não cole na borda */}
+          <div className="flex-none w-12 pointer-events-none" />
         </div>
+
+        {/* Gradiente de Mascaramento para indicar que há mais conteúdo */}
+        <div className="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-[#050505] to-transparent pointer-events-none z-10 hidden md:block" />
+      </div>
+
+      {/* Footer da Seção: Navegação Visual */}
+      <div className="flex items-center justify-between mt-2">
+        <div className="flex gap-1">
+          <div className="w-8 h-[1px] bg-neutral-800" />
+          <div className="w-2 h-[1px] bg-neutral-900" />
+          <div className="w-2 h-[1px] bg-neutral-900" />
+        </div>
+        <span className="text-[9px] font-mono uppercase tracking-[0.4em] opacity-20">
+          Scroll to Explore Data
+        </span>
       </div>
     </DropdownSection>
   );
